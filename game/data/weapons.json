@@ -1,0 +1,15 @@
+{
+  "weapons": [
+    {"id":"wood_sword","name":"Wood Sword","type":"light","base_damage":8,"durability":55,"effect":"none"},
+    {"id":"storm_spear","name":"Storm Spear","type":"pole","base_damage":12,"durability":70,"effect":"shock"},
+    {"id":"ember_blade","name":"Ember Blade","type":"heavy","base_damage":18,"durability":40,"effect":"burn"},
+    {"id":"frost_axe","name":"Frost Axe","type":"heavy","base_damage":22,"durability":36,"effect":"freeze"}
+  ],
+  "arrows": [
+    {"id":"arrow_normal","name":"Normal Arrow","element":"none","impact_damage":10},
+    {"id":"arrow_fire","name":"Fire Arrow","element":"fire","impact_damage":8},
+    {"id":"arrow_ice","name":"Ice Arrow","element":"ice","impact_damage":8},
+    {"id":"arrow_shock","name":"Shock Arrow","element":"shock","impact_damage":7},
+    {"id":"arrow_bomb","name":"Bomb Arrow","element":"blast","impact_damage":16}
+  ]
+}

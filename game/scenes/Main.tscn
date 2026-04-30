@@ -1,0 +1,116 @@
+[gd_scene load_steps=12 format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/Player.tscn" id="1_player_scene"]
+[ext_resource type="Script" path="res://scripts/minimap_controller.gd" id="2_minimap"]
+[ext_resource type="Script" path="res://scripts/world_generator.gd" id="3_worldgen"]
+[ext_resource type="Script" path="res://scripts/story_manager.gd" id="4_story"]
+[ext_resource type="Script" path="res://scripts/tower_unlock.gd" id="5_tower"]
+[ext_resource type="Script" path="res://scripts/boss_controller.gd" id="6_boss"]
+[ext_resource type="Script" path="res://scripts/hud_controller.gd" id="7_hud"]
+[ext_resource type="Script" path="res://scripts/section_one_coordinator.gd" id="8_coordinator"]
+
+[sub_resource type="CylinderMesh" id="1_tower_mesh"]
+height = 28.0
+bottom_radius = 2.0
+top_radius = 1.5
+
+[sub_resource type="SphereShape3D" id="2_tower_area"]
+radius = 6.0
+
+[sub_resource type="SphereMesh" id="3_boss_mesh"]
+radius = 2.0
+height = 4.0
+
+[node name="Main" type="Node3D"]
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+rotation = Vector3(-0.9, 0.7, 0)
+light_energy = 1.2
+shadow_enabled = true
+
+[node name="WorldGenerator" type="Node3D" parent="."]
+script = ExtResource("3_worldgen")
+world_size_meters = 18000
+chunk_size = 64
+chunks_visible_radius = 5
+
+[node name="StoryManager" type="Node" parent="."]
+script = ExtResource("4_story")
+
+[node name="Player" parent="." instance=ExtResource("1_player_scene")]
+position = Vector3(0, 20, 0)
+
+[node name="TowerUnlock" type="Area3D" parent="."]
+script = ExtResource("5_tower")
+tower_id = "relay_alpha"
+map_cell = Vector2i(0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TowerUnlock"]
+shape = SubResource("2_tower_area")
+
+[node name="TowerMesh" type="MeshInstance3D" parent="TowerUnlock"]
+mesh = SubResource("1_tower_mesh")
+position = Vector3(20, 14, 20)
+
+[node name="Boss" type="CharacterBody3D" parent="."]
+script = ExtResource("6_boss")
+position = Vector3(70, 20, 60)
+
+[node name="BossMesh" type="MeshInstance3D" parent="Boss"]
+mesh = SubResource("3_boss_mesh")
+
+[node name="SectionOneCoordinator" type="Node" parent="."]
+script = ExtResource("8_coordinator")
+
+[node name="HUD" type="CanvasLayer" parent="."]
+script = ExtResource("7_hud")
+
+[node name="MinimapViewport" type="SubViewport" parent="HUD"]
+size = Vector2i(300, 300)
+script = ExtResource("2_minimap")
+target_path = NodePath("../../Player")
+texture_rect_path = NodePath("../Minimap")
+
+[node name="MiniCam" type="Camera3D" parent="HUD/MinimapViewport"]
+current = true
+projection = 1
+size = 120.0
+
+[node name="Minimap" type="TextureRect" parent="HUD"]
+anchors_preset = 1
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 316.0
+offset_bottom = 316.0
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ObjectiveLabel" type="Label" parent="HUD"]
+offset_left = 16.0
+offset_top = 324.0
+offset_right = 860.0
+offset_bottom = 352.0
+text = "Objective"
+
+[node name="TowerPrompt" type="Label" parent="HUD"]
+offset_left = 16.0
+offset_top = 356.0
+offset_right = 640.0
+offset_bottom = 384.0
+text = "Hold [E] to activate relay tower"
+
+[node name="StaminaBar" type="ProgressBar" parent="HUD"]
+offset_left = 16.0
+offset_top = 392.0
+offset_right = 260.0
+offset_bottom = 416.0
+max_value = 100.0
+value = 100.0
+
+[node name="BossHealthBar" type="ProgressBar" parent="HUD"]
+offset_left = 400.0
+offset_top = 20.0
+offset_right = 900.0
+offset_bottom = 44.0
+max_value = 100.0
+value = 100.0
