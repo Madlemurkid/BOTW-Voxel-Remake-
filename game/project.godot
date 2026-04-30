@@ -1,0 +1,29 @@
+; Engine configuration file.
+config_version=5
+
+[application]
+config/name="Voxel Wayfinder"
+run/main_scene="res://scenes/Main.tscn"
+
+[display]
+window/size/viewport_width=1280
+window/size/viewport_height=720
+window/size/mode=0
+
+[input]
+move_forward={"deadzone":0.5,"events":[{"type":"InputEventKey","physical_keycode":87}]}
+move_backward={"deadzone":0.5,"events":[{"type":"InputEventKey","physical_keycode":83}]}
+move_left={"deadzone":0.5,"events":[{"type":"InputEventKey","physical_keycode":65}]}
+move_right={"deadzone":0.5,"events":[{"type":"InputEventKey","physical_keycode":68}]}
+jump={"deadzone":0.5,"events":[{"type":"InputEventKey","physical_keycode":32}]}
+sprint={"deadzone":0.5,"events":[{"type":"InputEventKey","physical_keycode":16777237}]}
+look_capture={"deadzone":0.5,"events":[{"type":"InputEventMouseButton","button_index":1}]}
+attack={"deadzone":0.5,"events":[{"type":"InputEventMouseButton","button_index":1}]}
+interact={"deadzone":0.5,"events":[{"type":"InputEventKey","physical_keycode":69}]}
+
+[rendering]
+renderer/rendering_method="forward_plus"
+textures/canvas_textures/default_texture_filter=1
+
+[autoload]
+GameState="*res://scripts/game_state.gd"
