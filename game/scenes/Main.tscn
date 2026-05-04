@@ -107,6 +107,13 @@ offset_bottom = 416.0
 max_value = 100.0
 value = 100.0
 
+[node name="GlideStatus" type="Label" parent="HUD"]
+offset_left = 272.0
+offset_top = 392.0
+offset_right = 360.0
+offset_bottom = 416.0
+text = "GLIDE"
+
 [node name="BossHealthBar" type="ProgressBar" parent="HUD"]
 offset_left = 400.0
 offset_top = 20.0
