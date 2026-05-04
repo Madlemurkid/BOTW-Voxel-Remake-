@@ -15,13 +15,15 @@ This section is now built end-to-end as a complete gameplay loop:
 - Persistent map/tower unlock state (`game_state.gd` autoload).
 - Boss activation + chase/combat health loop (`boss_controller.gd`).
 - Player attack signal and stamina gameplay loop (`player_controller.gd`).
+- Stamina-gated glide traversal while falling, with reduced descent speed and air control (`player_controller.gd`).
 - Section coordinator wiring player attacks to boss damage and story completion (`section_one_coordinator.gd`).
-- HUD for objective text, stamina bar, tower prompt, and boss health (`hud_controller.gd`).
+- HUD for objective text, stamina bar, glide state, tower prompt, and boss health (`hud_controller.gd`).
 
 ## Controls
 - Move: WASD
 - Jump: Space
 - Sprint: Shift
+- Glide: F (hold while falling)
 - Attack: Left Mouse
 - Interact / Activate Tower: E (hold)
 - Mouse look: move mouse
