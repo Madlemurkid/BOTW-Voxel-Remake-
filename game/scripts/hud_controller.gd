@@ -4,6 +4,7 @@ extends CanvasLayer
 @onready var stamina_bar: ProgressBar = $StaminaBar
 @onready var tower_prompt: Label = $TowerPrompt
 @onready var boss_bar: ProgressBar = $BossHealthBar
+@onready var glide_status := get_node_or_null("GlideStatus") as Label
 
 @onready var player: Node = get_node_or_null("../Player")
 @onready var story: Node = get_node_or_null("../StoryManager")
@@ -15,10 +16,14 @@ func _ready() -> void:
 		story.story_updated.connect(_on_story_updated)
 	tower_prompt.visible = false
 	boss_bar.visible = false
+	if glide_status:
+		glide_status.visible = false
 
 func _process(_delta: float) -> void:
 	if player and player.has_method("stamina_percent"):
 		stamina_bar.value = player.stamina_percent()
+	if player and player.has_method("is_gliding") and glide_status:
+		glide_status.visible = player.is_gliding()
 	if boss and boss.has_method("health_percent") and boss.has_method("is_boss_active"):
 		boss_bar.visible = boss.is_boss_active()
 		boss_bar.value = boss.health_percent()
