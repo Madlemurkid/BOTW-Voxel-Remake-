@@ -65,9 +65,9 @@ Build an original voxel open-world action-adventure with systemic gameplay and e
 ## World Content Plan
 - 8 major regions, each with:
   - 1 hub settlement
-  - 4–6 minor outposts
-  - 10–15 points of interest
-  - 12–20 sanctum-style challenges
+  - 4-6 minor outposts
+  - 10-15 points of interest
+  - 12-20 sanctum-style challenges
 - Dynamic encounter director for roads, storms, and faction skirmishes.
 - Wildlife ecology loop (predator/prey/resource migration).
 
@@ -78,7 +78,7 @@ Build an original voxel open-world action-adventure with systemic gameplay and e
 - Main quest gated by beacon milestones; side quests deepen region mechanics.
 
 ## Technical Architecture
-- **Engine**: Unity/Unreal/Godot (select based on team skill and tooling).
+- **Engine**: Godot 4.x for the current prototype and vertical-slice iteration.
 - **Voxel world**:
   - Chunk streaming, async generation/loading.
   - Mesh LOD and impostor strategy for long-range views.
@@ -90,39 +90,64 @@ Build an original voxel open-world action-adventure with systemic gameplay and e
 
 ## Production Roadmap (for the assistant execution strategy)
 
-### Phase 0 (Weeks 1–4): Preproduction
+### Phase 0 (Weeks 1-4): Preproduction
 - Finalize game pillars, legal guardrails, and GDD skeleton.
 - Choose engine and establish repository structure.
 - Build graybox test arena for movement/combat/physics.
 
-### Phase 1 (Weeks 5–12): Vertical Slice
+### Phase 1 (Weeks 5-12): Vertical Slice
 - Implement movement, climbing, gliding, stamina.
 - Implement one enemy family, one settlement prototype, one sanctum.
 - Prototype ability trio (Grav Latch, Pulse Bind, Cryo Weave).
 - Add minimal UI/HUD and inventory.
 
-### Phase 2 (Months 4–8): Core Systems Alpha
+### Phase 2 (Months 4-8): Core Systems Alpha
 - Expand combat families and elemental interactions.
 - Implement quest framework, NPC schedules, shops, cooking.
 - Build 2 full regions with tower/beacon and map reveal.
 - Performance baseline: stable frame targets on target platform.
 
-### Phase 3 (Months 9–14): Content Pipeline Scale-Up
+### Phase 3 (Months 9-14): Content Pipeline Scale-Up
 - Tooling for biome stamping, encounter authoring, sanctum templates.
 - Produce remaining regions using repeatable pipeline.
 - Add dungeons, bosses, faction questlines.
 
-### Phase 4 (Months 15–20): Beta
+### Phase 4 (Months 15-20): Beta
 - Full progression path playable end-to-end.
 - Balance economy, difficulty, traversal stamina tuning.
 - QA pass: quest blockers, physics exploits, save corruption tests.
 
-### Phase 5 (Months 21–24): Polish/Launch Prep
+### Phase 5 (Months 21-24): Polish/Launch Prep
 - Animation polish, accessibility options, UX clarity.
 - Audio pass, optimization, bug burn-down.
 - Release candidate stabilization and patch plan.
 
+## Current Implementation Log
+- 2026-04-30: Built the Relay Alpha vertical slice in Godot: chunked terrain, player movement/stamina, tower activation, story state, Warden boss, HUD, and minimap viewport.
+- 2026-05-04: Added stamina-gated gliding while falling, including reduced descent speed, air control, F-key binding, and HUD state feedback.
 
+## Research Notes (2026-05-04)
+- **Systemic rules create reusable fun**: The strongest transferable lesson from Breath of the Wild is not the specific world, items, or lore; it is the consistent interaction layer where physics and state changes combine into player-authored solutions. Build this as original material tags and simple rule chains before adding more content.
+- **Open-air exploration needs readable freedom**: Nintendo's making-of material frames exploration, scale, combat, music, and small world behaviors as mutually reinforcing the feeling of an open-air adventure. For this game, every region should offer visible travel goals, traversal affordances, and at least one local systemic twist.
+- **Curiosity needs authored information gaps**: Empirical curiosity research supports using level-design patterns that create partial visibility, mystery, contrast, and reachable questions. Convert that into landmark chains, suspicious silhouettes, unusual terrain breaks, locked ruins, and micro-puzzles.
+- **Rewards should be paced, not spammed**: Treasure-chest research suggests curiosity can shift into fatigue when rewards are overexposed. Use fewer chests, stronger environmental tells, and rewards that unlock traversal/combat options instead of generic filler.
+- **Avoid open-world fatigue**: Limit the number of simultaneous visible goals in each vista, introduce new activity types through main-path play, and make optional content legible by expected time investment and reward category.
+
+## Research-Derived Backlog Additions
+- Build a systemic material prototype with `wet`, `burning`, `conductive`, and `frozen` states affecting actors and simple props.
+- Add a first landmark chain: tower view -> strange ruin silhouette -> micro-puzzle -> reward -> another visible hook.
+- Create reusable POI templates: wind lift, cave mouth, broken bridge, buried relic, enemy camp, shrine/sanctum entrance, rare resource patch.
+- Add reward pacing rules: one meaningful reward per short detour, one upgrade/resource reward per medium POI, and no filler-only chest placements.
+- Add vista budgeting: each major overlook should surface 3-5 intentional goals, not a noisy field of icons.
+- Add a field-guide/debug overlay that explains active material states during development.
+
+## Research Sources
+- Nintendo UK, making-of videos for The Legend of Zelda: Breath of the Wild: https://www.nintendo.com/en-gb/News/2017/March/Go-behind-the-scenes-with-the-making-of-The-Legend-of-Zelda-Breath-of-the-Wild-1206592.html
+- Nintendo of America / GDC 2017, "Breaking Conventions" session: https://www.youtube.com/watch?v=niIVdlavc7I
+- GamesBeat summary of Breath of the Wild physics and chemistry discussion: https://gamesbeat.com/the-legend-of-zelda-breath-of-the-wild-makes-chemistry-just-as-important-as-physics
+- Gomez-Maureira et al., "Level Design Patterns That Invoke Curiosity-Driven Exploration": https://research.tudelft.nl/en/publications/level-design-patterns-that-invoke-curiosity-driven-exploration-an/
+- Tang and Kirman, "Designing for Curiosity: Understanding Player Engagement with Treasure Chest Mechanics in Open-World Games": https://www.sciencedirect.com/science/article/pii/S1071581925001326
+- PC Gamer coverage of GDC open-world fatigue design problems: https://www.pcgamer.com/games/action/players-dont-explore-former-grand-theft-auto-6-and-red-dead-online-designer-lays-out-the-perils-of-open-world-fatigue/
 
 ## Visual Quality Plan (Real Textures + Material Pipeline)
 - Target an art style that combines voxel geometry with high-quality PBR materials (albedo, normal, roughness, AO, optional height).
@@ -165,19 +190,19 @@ Build an original voxel open-world action-adventure with systemic gameplay and e
 
 ## Team & Resourcing (Indicative)
 - 1 Creative Director / 1 Production Lead
-- 4–8 Gameplay Engineers
-- 2–4 Engine/Tools Engineers
-- 6–12 Environment/Character Artists
-- 3–6 Animators
-- 2–4 Designers (systems/world/quest)
+- 4-8 Gameplay Engineers
+- 2-4 Engine/Tools Engineers
+- 6-12 Environment/Character Artists
+- 3-6 Animators
+- 2-4 Designers (systems/world/quest)
 - 2 Narrative + 1 Audio + 4+ QA (scaled over time)
 
 ## Risks & Mitigations
-1. **Scope explosion** → Strict feature gates and milestone exit criteria.
-2. **Performance bottlenecks (voxel + simulation)** → Early profiling and hard budgets.
-3. **Systemic bug complexity** → Automated gameplay tests for state interactions.
-4. **Content throughput** → Modular templates + procedural assist tools.
-5. **IP adjacency risk** → Red-team originality reviews every milestone.
+1. **Scope explosion** -> Strict feature gates and milestone exit criteria.
+2. **Performance bottlenecks (voxel + simulation)** -> Early profiling and hard budgets.
+3. **Systemic bug complexity** -> Automated gameplay tests for state interactions.
+4. **Content throughput** -> Modular templates + procedural assist tools.
+5. **IP adjacency risk** -> Red-team originality reviews every milestone.
 
 ## Definition of Done (Release)
 - All main story acts playable with no blocker bugs.
@@ -187,7 +212,8 @@ Build an original voxel open-world action-adventure with systemic gameplay and e
 - Original-IP compliance review passed.
 
 ## Immediate Next Actions
-1. Lock engine choice and target platform.
-2. Build the vertical-slice backlog with task-level estimates.
-3. Implement traversal + stamina first, then one sanctum prototype.
-4. Run weekly playtests and tuning review against pillar checklist.
+1. Verify the glide prototype in Godot and tune fall speed/stamina drain.
+2. Add stamina-gated climbing on tagged rough surfaces.
+3. Add the first research-backed curiosity POI chain near Relay Alpha.
+4. Prototype material state tags for wet/burning/conductive/frozen interactions.
+5. Add minimap markers for relay, boss, POI, and custom pins.
